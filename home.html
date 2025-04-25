@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>homepage</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        *{
+            padding:0;
+            margin:0;
+            box-sizing:border-box;
+        }
+        body{
+            font-family: 'Open Sans',sans-serif;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+        .navbar{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            padding-bottom: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
+            background-color: black;
+            color:white;
+            margin-bottom: 10px;
+        }
+        .navbar-links{
+            list-style: none;
+            display: flex;
+            gap:20px;
+            font-size: 20px;
+        }
+        .hero{
+            height: 450px ;
+            background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('B.PNG');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            color:white;
+            text-align:center;
+            padding-top:100px;
+            border-radius: 20px;
+        }
+        .hero-title{
+            font-size: 50px;
+        }
+        .hero-lead{
+            font-size: 25px;
+        }
+        .hero-btn{
+            background: white;
+            color:black;
+            padding: 10px;
+            display: inline-block;
+            margin-top:10px;
+            border-radius:10px;
+            font-weight: bold;
+        }
+        .about{
+            padding:20px 20px 20px 20px;
+        }
+        .section-title{
+            font-size:35px;
+            text-align:center;
+            margin-bottom: 10px;
+        }
+        .about-layout{
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap:20px;
+            align-items: center;
+            padding:40px 40px 40px 40px;
+        }
+        .about-layout img{
+            margin-left: 130px;
+        }
+        .about-text{
+        line-height: 1.8;
+        }
+        .contact{
+            background: lightgreen;
+            padding: 35px;
+        }
+        .contact-card{
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            width: 650px;
+            margin: auto;
+        }
+        label{
+            display: block;
+        }
+        input,textarea{
+            width: 480px;
+            font-size: 10px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .text-center{
+            text-align: center;
+        }
+        .btn-pri{
+            background: blue;
+            border: none;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 10px;
+            text-align:center;
+            margin-left:270px;
+        }
+        footer{
+            background:black;
+            padding: 30px;
+            color:white;
+            text-align:center;
+        }
+        a{
+            margin-bottom:10px;
+            padding-top:10px;
+        }
+        input,textarea,label{
+            font-size:15px;
+            border-radius:10px;
+            margin-left:60px;
+        }
+    </style>
+    <script>
+        function checkLogin() {
+            
+            const isLoggedIn = false; 
+
+            if (!isLoggedIn) {
+                alert("Please register or login to access your account.");
+                return false; 
+            }
+            return true; 
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navbar-links">
+            <li><a href="account" onclick="return checkLogin();">My Account</a></li>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="bro.png">About us</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+    </nav>
+    <section class="hero">
+        <h1 class="hero-title">HOMEO-GEN</h1>
+        <h1 class="hero-title">HEALTH IS WEALTH MAKE IT HEALTHY!</h1><br>
+        <h3 class="hero-lead">What it really do?</h3>
+        <p>One stop for complete HOMEO health</p><br>
+        <a href="registration.php"><button class="hero-btn" >
+            REGISTER HERE
+        </button></a>
+        <a href="login.php"><button class="hero-btn" >
+            ALREADY HAVE AN ACCOUNT, LOGIN HERE
+           </button></a>
+        </h3>
+    </section>
+
+    <section class="aboutus">
+       <h2 class="section-title">
+            About us
+       </h2>
+       <div class="about-layout">
+            <div class="about-text">
+                <p><strong>Homeopathy </strong> is a system of alternative medicine that originated in the late 18th century. It was developed by Samuel Hahnemann, a German physician. The fundamental principle of homeopathy is "like cures like," which suggests that a substance that causes symptoms in a healthy person can be used to treat similar symptoms in a sick person.</p><br>
+                <p><strong>Generic medicines </strong>are bioequivalent to brand-name drugs, containing the same active ingredients but often at a lower cost. They undergo rigorous testing to ensure safety and quality. Generic medicines provide a cost-effective alternative to branded medications, making essential treatments more accessible to a broader population.
+                </p>
+            </div>
+            <div class="about-img">
+                <img src="bg3.jpeg" width="320px">
+            </div>
+       </div>
+    </section>
+    <section class="contact">
+        <h2 class="section-title">Contact us</h2>
+        <div class="contact-card">
+            <form action="">
+                <div class="form-item">
+                    <label>Name</label>
+                    <input type="text" placeholder="Enter your name"/>
+                </div>
+                <div class="form-item">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter your email"/>
+                </div>
+                <div class="form-item">
+                    <label>Phone number</label>
+                    <input type="number" placeholder="Enter your phone number"/>
+                </div>
+                <div class="form-item">
+                    <label>Age</label>
+                    <input type="number" placeholder="Enter your age"/>
+                </div>
+                <div class="form-item">
+                    <label>Diseases</label>
+                    <textarea type="text" placeholder="Describe about your diseases">
+                    </textarea>
+                </div>
+                <div>
+                 <a href="callus.html"><button class="btn-pri" >
+                        Call us!
+                    </button></a>
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <p>
+            Copyright Homeocare and generic medicine. All rights reserved.
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Body Map</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right,grey,wheat);
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+    }
+    h1 {
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      margin: 20px;
+    }
+    .body-image {
+      width: 300px;
+    }
+    #exercise-info {
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #e6f7ff;
+      border-radius: 10px;
+      width: 400px;
+    }
+    #exercise-info h2 {
+      margin-top: 0;
+    }
+    .d{
+      margin-bottom:50px;
+    display: flex;
+    gap:25px;
+    background-color: black;
+    padding: 10px;
+   border-radius: 10px;
+   justify-content: flex-end;
+}
+.a{
+    text-decoration: none;
+    color:white;
+   font-size: 25px;
+
+}
+.left-text {
+    color: white;
+    font-size: 30px;
+    margin-right: auto; /* Pushes everything else to the right */
+}
+
+  </style>
+</head>
+<body>
+        <div class="d">
+        <div class="left-text">HOMEO-GEN</div>
+
+        <div>
+            <a class="a" href="home.php">Home</a>
+        </div>
+        <div>
+            <a class="a" href="gridpage.html">Contents</a>
+        </div>
+        <div>
+            <a class="a" href="aboutus.pdf">About Us</a>
+        </div>
+        <div>
+            <a class="a" href="account.php">Profile</a>
+        </div>
+    </div>
+  <h1>Interactive Body Map</h1>
+  <p style="text-align: center;">Click on a body part to get tailored exercises.</p>
+  <div class="container">
+    <!-- Image section -->
+    <img src="b_1.png" alt="Body Silhouette" usemap="#body-map" class="body-image">
+    <map name="body-map">
+      <area shape="circle" coords="150,80,30" alt="Head" href="#" data-part="head">
+      <area shape="rect" coords="120,120,180,200" alt="Arms" href="#" data-part="arms">
+      <area shape="circle" coords="150,300,40" alt="Legs" href="#" data-part="legs">
+      <area shape="circle" coords="150,140,20" alt="Heart" href="#" data-part="heart">
+    </map>
+
+   
+    <div id="exercise-info">
+      <h2>Exercise Suggestions</h2>
+      <p id="exercise-details">Click on a body part to see suggestions.</p>
+    </div>
+  </div>
+  
+  <script>
+    const mapAreas = document.querySelectorAll('area');
+    const exerciseDetails = document.getElementById('exercise-details');
+
+    mapAreas.forEach((area) => {
+      area.addEventListener('click', (event) => {
+        event.preventDefault();
+        const bodyPart = area.getAttribute('data-part');
+        showExerciseSuggestions(bodyPart);
+      });
+    });
+
+    function showExerciseSuggestions(bodyPart) {
+      let suggestions = '';
+      switch (bodyPart) {
+        case 'head':
+          suggestions = 'Relaxation exercises, neck stretches, and eye yoga.';
+          break;
+        case 'arms':
+          suggestions = 'Arm circles, dumbbell curls, and tricep dips.';
+          break;
+        case 'legs':
+          suggestions = 'Squats, lunges, and calf raises.';
+          break;
+        case 'heart':
+          suggestions = 'Cardio exercises like brisk walking or cycling.';
+          break;
+        default:
+          suggestions = 'Click on a body part to see exercise suggestions.';
+      }
+      exerciseDetails.textContent = suggestions;
+    }
+  </script>
+</body>
+</html>

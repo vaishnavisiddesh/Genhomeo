@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydration Indicator</title>
+    <style>
+      body {
+    background: linear-gradient(to right, lightblue, white);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif; 
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.label {
+    font-size: 1.9em;
+    margin: 20px;
+    font-weight: bold;
+}
+
+.number-input {
+    width: 460px;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+}
+
+.hydration-status {
+    font-size: 1.8em;
+    margin-top: 20px;
+    text-align: center; 
+}
+
+.hydration-img {
+    display: block;
+    margin: 10px auto;
+    width: 450px;
+    border-radius: 20px;
+}
+
+.i {
+    width: 300px;
+    background-color: #f6f5f0;
+    color: #444;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px;
+    border: 2px solid #0a0a0a;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    position: relative;
+    word-wrap: break-word;
+    line-height: 1.5; 
+    margin-left: 100px;
+}
+
+.i ul {
+    padding-left: 20px;
+}
+ .d{
+     width:100%;
+      margin-bottom:50px;
+    display: flex;
+    gap:25px;
+    background-color: black;
+    padding: 10px;
+   border-radius: 10px;
+   justify-content: flex-end;
+}
+a{
+    text-decoration: none;
+    color:white;
+   font-size: 25px;
+
+}
+.left-text {
+    color: white;
+    font-size: 30px;
+    margin-right: auto; 
+}
+
+    </style>
+</head>
+<body>
+     <div class="d">
+        <div class="left-text">HOMEO-GEN</div>
+
+        <div>
+            <a href="home.php">Home</a>
+        </div>
+        <div>
+            <a href="gridpage.html">Contents</a>
+        </div>
+        <div>
+            <a href="aboutus.pdf">About Us</a>
+        </div>
+        <div>
+            <a href="account.php">Profile</a>
+        </div>
+    </div>
+
+    
+    <div class="container">
+        <label for="waterConsumed" class="label">Liters of Water Consumed: <span id="hydrationValue">0</span></label><br><br>
+        <input type="number" id="waterConsumed" class="number-input" min="0" max="100" placeholder="                   Check how hydrated you are!">
+        <div id="hydrationStatus" class="hydration-status"></div>
+    </div>
+    <div class="i">
+        <b>How to stay hydrated</b><br>
+    <ul>
+        <li>Drink plenty of fluids like water, diluted fruit juice, and tea </li>
+<li>Eat foods with high water content, like fruits, vegetables, and greens </li>
+<li>Drink regularly throughout the day </li>
+<li>Increase your fluid intake if you're active or it's hot </li>
+<li>Replace fluids if you're sick with a fever, vomiting, or diarrhea </li>
+</ul>
+</div>
+
+<div class="i">
+<b>How to tell if you're hydrated </b><br><br>
+
+<li>Check the color of your urine</li>
+<li>Pale yellow or straw-colored urine indicates good hydration</li>
+<li>Darker yellow urine indicates a need for more water</li>
+</ul>  </div>
+
+
+    <div class="i">
+        <b>Why hydration is important </b><br>
+        <ul>
+        <li>Helps the digestive system function</li>
+        <li>Keeps skin healthy</li>
+        <li>Helps regulate body temperature</li>
+        <li>Helps keep concentration up</li>
+        <li>Improves sleep quality, cognition, and mood</li>
+        <li>Helps prevent infections</li>
+        <li>Delivers nutrients to cells</li>
+        <li>Keeps organs functioning properly</li>
+    </ul>
+    </div>
+    
+    <script>
+        const waterInput = document.getElementById('waterConsumed');
+        const hydrationValue = document.getElementById('hydrationValue');
+        const hydrationStatus = document.getElementById('hydrationStatus');
+    
+        waterInput.oninput = function() {
+            const waterConsumed = parseFloat(this.value);
+            hydrationValue.textContent = waterConsumed;
+    
+            
+            if (this.value !== '') {
+                hydrationStatus.innerHTML = '';
+    
+                if (waterConsumed < 3) {
+                    hydrationStatus.textContent = 'You need to drink more water! Flavor it Add fruit to your water. Lemons, limes and oranges are tried and true. Cucumber, watermelon, strawberries and herbs also are delicious options.';
+                    hydrationStatus.style.color = 'red';
+                    const img = document.createElement('img');
+                    img.src = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIQEhASEBAQFRASFRURFxIWEBAPEBUVFhUWFxUSFRUZHiggGBolGxUXITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGy0lICUrLS0tLS0rLS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAJ0BQgMBEQACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAAAwQBAgUGBwj/xAA6EAACAQICBwQIBgEFAQAAAAAAAQIDEQQhBRIxQVFhcRMigZEGMlKSobHB0QcUQmLh8PEjgqKysxX/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAQIDBAUG/8QALREBAAICAQMDAwQCAgMAAAAAAAECAxESBCExE0FRIjLwBUJhcRThocEjM7H/2gAMAwEAAhEDEQA/APuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIsViIUoTqVJxhTgnKU5NRjGKzbbexAeNl+KujFPV7Wra9tf8vV1Ouy9udi3GVuEvW6N0jRxNONXD1YVKctk4SUldbVya3p5oqqtAAAAAAAAAAAAAAAAPG6S/E3RtCpKm605yi7SdOnKpBNZNa2yXhctFZWisu7oP0jwuNg54avCaVtZZxqRvsUoStKPiiNSrMa8r7xEefkTxlXlAsTHn5EcZOUN41U96GpTtuQkAAAAAAAAAAAAAAAAAAGs6iW0mI2iZ0rTxL3KxaKq8ngfxkxVRYCMU3qzrwjO3sqM5JPlrRj5FohfHO5fE7ZXs7Xte2V+F+OT8izd0/R/0gxOAqdphari360H3qVRblOG/rk1uaImIlExEvquhPxhw80li6NSjPfOH+vS62ymuln1KTSVJpL2GiPTDAYtqNDF0pTlsg26VR8lCaTfgiupV1LukIAAAAAAAAAAABwvTrETp6Px06banGhUaktq7rvJc0rvwJjymPL8zxjwWSW5ZJbPBbDZsnwGNq4epGrQqSp1Y7Jxdmr7Vwa5O6YJjb6XoL8WVZRxtB32drRs0+cqcnl4N9ERpjOL4evwHpzo6u0o4unGTytUU6Dvw76S+IZzS0PREKN4VGtjExCYmYTwxPHzKTVeLJ07lVmQAAAAAAAAAAAAAAIq1bV6kxG0TOlOTvtNGbBKHM9JNDxxuGq4eTtrruy26s07wl4NLwuQtWdTt4HQWhMPHDPBVpUZ1pXnWhGpGU4z4q2a1VZJ8uZxZcl+fKPD3cNKTj4z5l4z0j9FK2Ebkk6lDdUSziuFRLZ12dNh0481b/25MuC1P6efNmDP+fFbGB+kvQLSVStgMJOu26kqavN7ZpNqM2+Lik78zKasJmN6ejKgAAAAAAAAAAUMbarGUJK9OScZJ7JJqzT5WNIjSk27vlfo96N0cFWxdGpUo1Kkm6cIOcJTeHspd6G27vmv2I5uptb29nrdFFZrufMvPek/oTOk5VMKnOltdPOVSHT24/HrtLYuoi3a3lGbppr3r4eOOpyMAfaPwcxdSpg6kajbhSquFNu7tHUjJwT4JvwvYhz5Y7veBkAbQqNbP4ImNpidLlKspdeBnMaaRO0hCQAAAAAAAAAAAV8fWcITafes7dS+OvK0RKmS3GszChhKjnCMpO8ne72b2bZKxW0xDHHabViZSlFwCHF1NWE3yfLN5IpktxrMtsFOeSKvDaPwMKNScY4SjCnFwVKolF1Zykm6s29qte127vM8615mO8vepSItPbsg01SnVqNYXEzhi6NONXsm28POMpSUY1I2t3nGSus15FqWiI+qOyMkTa2qz3j2ee/ETRuHpUqdSFGEK1Spqtx7qtqylK8Vk3e2djo6a1pmY32c3VUrWsTru816JaFeOxdGhnqN69RrdShZzfK+UU+M0dbgtOo2/RVOCilGKSjFKKSVkkskkuBDlWKNe2T2FZqmLLad9hm0ZAAAAHN0ji9WWrdpW3HRix7jbny5NTpF+ccU5a10s+KJtSPcpaZnUOd/9ate+utt7asbdOhyWpb2l6VfS1q1V6hpfX7s0otvavVfDoWpvf1QxzY4iN0nssXNp7OaO7wWlsHTqV4ylhaLg9etKvaMasKkZRdNQa7zk23n+3mebOSe87fQVxRXjXXt5a6bp68qFP8AN1qFSo5KEaeo9eSjrPWvFuySe9LPmiuOdbnW18sbmI5acj0m0RTWCq1MSqdTFU4NLERh2MpSb1acpqLzeaundbTbFkmb6r4Y5sURjmbeXzfCYadacKdNa1SpKMIrjKTsr8s9p3vO2/R2gNFQweHo4en6tONnKyTlJ5ym+bbbIclp3O3QCqPEVlCLk/Li+BalZtOoVvaKxtpg8Qqkb71k1w/gnJSaTpGO/ONp0zNdcoVr5Pb8ylo00idpiqwAAAAAAAAAxKVs2BzMdPWjPozfHGrQwyTusosEu5Hx+bLZfvlXF9sJyi4BT0s/9N82jn6n7Hb0EbzPPU4NN3V/3XvlfZbcee91IoK7dld2Tds2leyb8X5kmo8oq+Fpzac6cJON7a0VK19tr7NiJiZjwi1az5begmiMPTeKxWHUdXET1I6vqKNLuy1FuTq9psyequR6WLlxjk8Dq5r6kxXw9YaOUAlo1dXoVmNrROlxMzaMgAAFXG4JVd9mt5rjyzRlkxRdwtI4V0rJu6lfju4+ZtPU4/3K4+lyzvh7KdkWiMV/CLWz4/u22pWUk3sQ9HU7g/yJtWYlaeIeajvuvMm1ItWdM6XnHeNw5dbDSjNayTVss9lt9vrtPDy4rY51Z9Tg6imaN1HBXTsrq9nbNX22ZRvqGmIoQqLVqQjKN09WSUo3TunZ8Gk/ARMx4JiJ7Sq6A0Jhp4+WIpxgp4aGrJRUVHtanqt2/WoKXhUjyO7p5tx7vH6+axaIq9sdLzQCLExTjK6Wx/ItSdWhW8bqj0fFKEclfPPftZfNP1SphjVYWTJqIhK7Qq6y5ozmNNInaUhIAAAAAAABy8TpBOp2a2LK/wC7h/d50Vwzw5Oe2aOfFiv6sujFPMF/EtcKu5H+72Mn3SY/thKVWAK2kaetTlbas/Ixz13SXV0l+GWJl5arSquV41YqOXccE1zu73PNfQrM5pJttJLa27JAcjTXovitIKLo4zsaElqzpuM7vO+taLWtdO2q2tnl3dNWOO9PK63PNb8f4e10To+GGo0aFO+pSgoK+12Wcnzbu31Op5UzudrYQAALGFqbn4FLQvWVoouAAAHD9JqqtCG++t4Wt9fgc+ee0Q9D9PrPKbOHTg5O0U2+COevKZ+l6OSaRG7rFLA1JNKzS3t5W8DprGe0cZmdOG9+kpPKIjbpUtHxjsb/AJ4nbSeFONXkZLTlyc7uVUrNu00sstlmuh59802nV3uY+mrSu8UtKtPV6PeZ5MfHv7NsObn2nzDl6T0VXxtPVweJVGUZd6XetONmnFSjmrOzuuG416asWmdww67LOOsadz0O9HY6Ow/Za+vUnOVWpUtq685WV7XeSSS252vvO94t7cp27gUANK3qy6P5E18wi3iWmEXcXj82Wy/crj+1JUmopt7EVrG51C0zERuUWExCqK+xravkWyY5pKuO/KFmnOzuZzG2kTpfTuZNWQAAAAAAQ4ubjCTXrWdutsi1I3aNq3nVZ08jfz+J6/bTyu+3ezcM9urn1tmed25dnf8At7s0V3UL+SnhuVWAMSklm2kuLdiJmI8rVrNp7ODpqEJJdhNRnrXbUdZWs8rPLbY4M/p/t8vZ6OM8f+zw5NLRyupVJzqNZrWfdT4qJzvQej0ZiIRhaUkndvPwO3BkrFdTLx+twZL5N1jfZfhWjLZKL6NM6IvWfEuC2K9fMS3LswAACV+lO6TMpjTSJ23ISAAPH6TxHaVZy3X1V0X9b8ThyW5We702PhjiE+hY96T4K3m/4Nulj6ply/qVvoiHXO54wyExEz4crSzpyjPVlHtWrKS71nxe525nJnnHMT8vT6SvUVmI/a5dPB69LVqzc9v7E7O6yQpHLD3a5J4dRuF/Q9SFPWTairJLcsr5FOmtWsztPX4r3iOMbdWOIg9k4+8jsjJWfd5U4MkeaylLMwlDWpsfRkx5RPhrQXdX93k3+5FPCppdu0eF3fru+pt0+tseo3qFfRjevlss79P82Neo1xZ4d8nXOJ2LWEnlbgZ2j3aVWCqwAAAAAFTFTu7cC9YUtKr2Mb31Y342VzXnbWtsuFfOm0iseVp8EVkTbyiPDJCXOxuktVuMM2snLcunE5MvUa7Ven03Q8o5X8fDlVKjk7ybb5nJNpny9WmOtI1WGpVcAAALWGx04b7x4N/J7jama1XJn6OmSPiXaw9dTWtH+VyZ30vF43DxMuK2O3GyQuyALGElm14lLL1Wii4BT0tiOzpSe991dX/fgZ5Lca7b9Pj55Ih5E4XvOtoRZTfNLyX8nZ0sdpl5H6lO7Vq3xWk4xyh3nx/SvuWydREdqs8HQWv3v2hyq1eU/Wk3y3eRyWyWt5l6uPBTHH0wjKNl6jC0Uv7mejjpqmni5sm8s2UpK2RwWjU6exS3KIlgqsmoYqcPVeXB5ryNKZLV8Swy9PjyR3h2sHi1UXCS2r6rijvxZYvDxOo6a2Gf4TyNY8uaSCyJt5RXwSink0muG0iJmPCZjflinTUfVSXRWJm0z5RFYjw2ISlw7tJeRW3havldM2gAAAAMSdlcDnt3NWTBKGUAaAqaRr6kHb1nkvqzHPfjV19Hh9TJ38Q4J5r6AAAAAAABb0bX1Jr2ZZP6P+8TbBfjZx9bh9THuPMO6ek8AAkoPvIrbwtHleM2gB530hra0401+nN9X/HzObLu1orD0+irFKTks5k6DSuUthtWNunH1VLzppGrKzjfu3vbjktpnF51prOOs25THdqRETPhabRHmWXFramJiYIvWfEtqMbtIvjrytEM8+ThSZXz0niKuKp/q8zj6in7oej0ebtwlXOV6AEbWcPGUGpras7cVvR00xWr9bhzZseTeP8A5d6Ek0mtjzO6J33eLas1mYls0TKrSU0uJOkTLHaLmOMnJuQlvS9ZdURPhMeV8yagAAAAhxUu71LV8q28KZozAN6SuyJTBWjZiJJcHS9XWnbdFW8Xm/ocHUW3bXw9voMfHHy+VI53eAAAADEtjAyAJQ9HhauvCMuKz67GenjtyrEvm89OGSapTRikw67yK28LV8rxm0APLVM6lWT267XgnYpir3mzszW1StI+GTdzoI4eLu89r6ZZfQ5/QrM7df8AlZKxpJNWWXL5o14xWvZhFrWtuW5bUSpEzHhhRS2JERWI8Jte1vMsllRiY2mJ1O4QPCri0c09NWfDrr1t4jUwzQopJPfxZfHirXuzzdRe/b2TGznXdGSy1fZdvB5r6+RTH23COojcxb5XKqzZpDnmFStLPd8DWsdmVp7tFPnHziTMI2tmTVLho3l0K2nstWO66ZtAAAAAVsY9heillWcrF4jakzpp2vL4luKOTeEr5lZjSYlmctrfVkT2haI5Tp5mc9Ztva235nlWnc7fTUrxrENJ7CsrsgAAAABiGwDJI6+handlHg7+f+Dt6W3aYeN+o01aLfLonU81awkN5naV6wsFVwDzukKepVkt0++uu9eZSk8bTE+7qn68cTHt2lBJ2zNpnUMojc6a075RitaXBbOre4z567R3lr6e/qt2hNXwL7Ocpu7UW0llFWV/ErekzWZtKcWesZK1pHv5nyig8l0RrSd1hnkjVphsWUAAADWG9c/nmVha3tLYsqmwM9Wov3L4rNfUp4v/AGm8bx/1LpTld3NI7OVzcZNKTunu3pbuh044ni58kxtCqseD95fYtMTpWJh10r7Dll1LtGnqrmZTO2kRpIQkAAAAFTF7V0L1UsqYh2W22fM1pHdlbwrdr+7/ALGvH+Ge1nDu623z5mV/LSs9kWkp6tOXPu+e34XOfPOqS7OjpyzQ4B5r6FiX1XzQkZAAAAADLptJPdK7XnZkzXURKlbxMzHwwQuu6Inaol7Sa+v0N+ntq7h6+nLFv4ejpYfj5HdNnixVaSKLgACjpOhGaSksvinxQ4RaNSmuW2Od1c5aMhvc2uDll8CPQj3mWv8Am29oiFunTUVaKSXI1rWKxqHNfJa87tJUjdNcU15oW8SUnVon+XHoPux6GeL7IdueNZJSGjEAAAI89ZvdlHxza+TMuX1t+MTj/lIasBSs4y9lp+Gx/Bspfxtpj77r8w6xq4XKx832jSnbJZd/hyVjqxRuvhzZZ1by0pvNXrf+n2LWjt9qsT38vUQppbEedM7ehENiEgAAAAAVsXHY/AvVSypOClkzSJ0pMbR/locPiy3qWV4QkhBRyWwrM78piNOfpqWUI8W35ZfU4+qntEPU/TojlNpcq3J+Rx6l63Ovydm3l/u8I5v5DjMonJWC3J+Q1KedfktyfkNSc6/Jbk/Iak51+S3J+Q1Jzr8luT8hqTnX5dCthn+Xpz4N9bNv62N7V/8AHDipk11No+XPtyfkYal286/KXCz1JwlnlJPwvmWruJiWeXVqTV7Q73gAAABHWhrLmTE6RMbUTRkEgQmPLi0Flbg2viY4fteh1H37/iEhqwAAADajTcoVrLNNNdYq5z+eTomeM44+d/8ALRO5vE7jbCY1OiSumuItG4TWdTEvQYFKUISsruKb352zM4mZhneurTDFfR1ObcpRu3v1pL5M1rlvWNRLG2Ktp3MI1omj7H/Kf3Levk+VfQp8Lxi2AAAAAAAYkr5MCnUotc0aRZnNURZUA52Nb7TY7KKWxvNtt/Qwmfr3Pw7sUbxaj5Q35S92X2Lc6npz+SlwtFyc8nZQcVk1nLb8jP7rT/S0zwrWPff/AMRxvZd2Xuy+xeLxpE453/ss/Zl7svsTzqj05/JLP2Ze7L7DnU9OfySz9mXuy+w51PTn8ks/Zl7kvsRN6kY53/t16VBvDKNu9qXtvv63zKRH0otaPVmf5ciz9mXuS+xeMlU+nP5LE4tprVls9iX2ItesxMLUpMWif+3pMLJuEG9rim+N7Cs9nPeNWmISkqgAABHUoqXXiTE6RMbQSwr3NFuavFr+Xly8yeUI4y4kqbjKacZevL9MmtvQwx2iu4n5ehkjnFZj4LP2Ze5L7GnqVZ+nP5JZ+zL3JfYepU9OfySz9mXuS+w9Sp6c/kln7Mvcl9h6lUenP5Lq6CptQm2mtabyatlZIyp7ynqJ7xEe0OV2TjeOrLutx9WTyTdns4FqXiI1K168p5R7ln7Mvcl9i/qVU9OfyXa0O32dmmrOSzTW++/qUqrl+5eLMgAAAAAAAAAAAauCe1LyG0aa9jHgidyahnso8ENyahlRXBeRCdNgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/Z';
+                    img.alt = 'Drink More Water';
+                    img.className = 'hydration-img';
+                    hydrationStatus.appendChild(img);
+                } else if (waterConsumed >= 3 && waterConsumed < 5) {
+                    hydrationStatus.textContent = 'You are on the right track! Challenge a friend. Kick off a healthy competition with a friend or your kids to see who can meet their guzzling goal most often.';
+                    hydrationStatus.style.color = 'orange';
+                    const img = document.createElement('img');
+                    img.src = 'https://img.freepik.com/premium-photo/man-woman-drinking-water-hydration-health-summer-vector-illustration_1029476-450599.jpg';
+                    img.alt = 'Drink More Water';
+                    img.className = 'hydration-img';
+                    hydrationStatus.appendChild(img);
+                } else if (waterConsumed >= 5 && waterConsumed <= 10) {
+                    hydrationStatus.textContent = 'Sip, sip, hooray! Drinking enough water keeps your body running smoother than a sports car and ensures you are energized to conquer the day. Stay hydrated, superstar! 💧✨You are overflowing with hydration goodness! Just remember, too much water can dilute essential electrolytes—balance is everything.';
+                    hydrationStatus.style.color = 'green';
+                    const img = document.createElement('img');
+                    img.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYaC9-CWRy2C5bzwGyydFRiO9w1MJYGy4MLA&s';
+                    img.alt = 'Drink More Water';
+                    img.className = 'hydration-img';
+                    hydrationStatus.appendChild(img);
+                } else {
+                    hydrationStatus.textContent = 'Drinking excessive water can strain your kidneys and upset your body electrolyte balance. Remember, even hydration has its limits!';
+                    hydrationStatus.style.color = 'black';
+                    const img = document.createElement('img');
+                    img.src = 'https://img.freepik.com/premium-vector/man-drinking-water-from-glass-healthy-lifestyle-vector-illustration_142112-1457.jpg?w=826';
+                    img.alt = 'Drink More Water';
+                    img.className = 'hydration-img';
+                    hydrationStatus.appendChild(img);
+                }
+            }
+        };
+    </script>
+   
+</body>
+</html>

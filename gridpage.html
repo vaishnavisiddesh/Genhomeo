@@ -1,0 +1,141 @@
+
+
+
+<html>
+    <head>
+        <title>
+            gridpage
+        </title>
+        <style>
+ 
+            @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+body{
+    font-family: 'Open Sans',sans-serif;
+    background: linear-gradient(to left,lightgreen,white);
+}
+a{
+    text-decoration: none;
+    color: inherit;
+
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+     background-color: black;
+    color:white;
+    margin-bottom: 10px;
+}
+.navbar-links{
+    list-style: none;
+    display: flex;
+    gap:20px;
+}
+.section-title{
+    font-size:35px;
+    text-align:center;
+    margin-bottom: 10px;
+}
+.section-lead{
+    font-size:20px;
+    text-align:center;
+    margin-bottom: 10px;
+    font-style:italic;
+}
+.services{
+    padding:35px;
+}
+.services-grid{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:35px;
+    margin-top: 50px;
+    text-align: center;
+}
+.grid-item img{
+    width:100%;
+    border:10px solid black ;
+    border-radius: 15px;
+}
+.navbar-links{
+    list-style: none;
+    display: flex;
+    gap:20px;
+    font-size: 20px;
+}
+            </style>
+        
+    </head>
+    <body>
+        
+       <nav class="navbar">
+        
+        <ul class="navbar-links">
+            <li><a href="account.php">My Account</a></li>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="bro.png">About us</a></li>
+            <li><a href="feedback.php">Feedback</a></li>
+        </ul>
+        </nav>
+        <section class="services">
+            <h2 class="section-title">
+                Why Homeo-Care?
+            </h2>
+            <p class="section-lead">
+                Homeopathy is a system of alternative medicine. It is based on the principle of "like cures like," which means that substances that produce symptoms in a healthy individual can be used to treat similar symptoms in a sick person when highly diluted.
+            </p>
+            <div class="services-grid">
+                <div class="grid-item">
+                   <a href="healthandwellnessnew.html"><img src="h-n-w.png"></a>
+                    <h3>Health and Wellness plan</h3>
+
+                </div>
+                <div class="grid-item">
+                    <a href="edu.html"><img src="e-c.png"></a>
+                    <h3>Educational Content</h3>
+
+                </div>
+                <div class="grid-item">
+                    <a href="recipes.html"> <img src="r-s.png"></a>
+                    <h3>Recipe Section </h3>
+
+                </div>
+                <div class="grid-item">
+                    <a href="yoga.html"> <img src="yoga.jpg"></a>
+                    <h3>Yoga Section </h3>
+
+                </div>
+                <div class="grid-item">
+                    <a href="quotes.php"> <img src="d-r.png"></a>
+                    <h3>Daily Tips and Remainders</h3>
+
+                </div>
+              
+                <div class="grid-item">
+                    <a href="homechart.html"><img src="chart.jpeg"></a>
+                    <h3>Homeopathy-Generic medicine-Home remedy CHART</h3>
+
+                </div>
+                <div class="grid-item">
+                    <a href="skincare.php"><img src="beauty.png"></a>
+                    <h3>Beauty Tips and Care</h3>
+
+                </div>
+
+            </div>
+
+        </section>
+        <div id="include-html"></div>
+
+
+    </body>
+</html>

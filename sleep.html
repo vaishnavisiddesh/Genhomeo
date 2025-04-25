@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+  .d{
+      margin-bottom:50px;
+    display: flex;
+    gap:25px;
+    background-color: black;
+    padding: 10px;
+   border-radius: 10px;
+   justify-content: flex-end;
+}
+.a{
+    text-decoration: none;
+    color:white;
+   font-size: 25px;
+
+}
+.left-text {
+    color: white;
+    font-size: 30px;
+    margin-right: auto; /* Pushes everything else to the right */
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: linear-gradient(to left, lightgray, lightseagreen);
+        }
+        form {
+            margin: 20px auto;
+            width: 300px;
+            background: #eaf2f8;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #3498db;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #chart-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+        h1 {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            margin-left:500px;
+        margin-right:500px;
+        }
+        .f {
+            display: inline-block;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            margin: 5px;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+        .info {
+            background-color: white;
+            color: black;
+            padding: 20px;
+            margin: 5px;
+            border-radius: 10px;
+            width: 500px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 20px;
+        }
+        #recommendation {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+     <div class="d">
+        <div class="left-text">HOMEO-GEN</div>
+
+        <div>
+            <a class="a" href="home.php">Home</a>
+        </div>
+        <div>
+            <a class="a" href="gridpage.html">Contents</a>
+        </div>
+        <div>
+            <a class="a" href="aboutus.pdf">About Us</a>
+        </div>
+        <div>
+            <a class="a" href="account.php">Profile</a>
+        </div>
+    </div>
+    <h1>Sleep Tracker</h1>
+    <div class="flex">
+        <div class="f">
+            <h2>5-6 hours <br>GOOD SLEEP</h2>
+        </div>
+        <div class="f">
+            <h2>6-7 hours <br>BETTER SLEEP</h2>
+        </div>
+        <div class="f">
+            <h2>7-9 hours <br>BEST SLEEP</h2>
+        </div>
+        <br><br>
+        <div class="info">
+            Sleep needs differ across age groups:<br><br>
+            1.Children (5-12 years): 9-11 hours<br>
+            2.Teenagers (13-17 years): 8-10 hours<br>
+            3.Adults (18-64 years): 7-9 hours<br>
+            4.Older Adults (65+): 7-8 hours<br>
+        </div>
+    </div>
+    <form id="sleepForm">
+        <h3>Log Your Sleep</h3>
+        <label for="date">Date:</label><br>
+        <input type="date" id="date" required><br>
+        <label for="sleepTime">Sleep Time:</label><br>
+        <input type="time" id="sleepTime" required><br>
+        <label for="wakeTime">Wake Time:</label><br>
+        <input type="time" id="wakeTime" required><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="chart-container">
+        <canvas id="sleepChart"></canvas>
+    </div>
+
+    <div id="recommendation"></div>
+
+    <script>
+        const sleepData = [];
+        const sleepForm = document.getElementById('sleepForm');
+        const recommendationDiv = document.getElementById('recommendation');
+
+        sleepForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const date = document.getElementById('date').value;
+            const sleepTime = document.getElementById('sleepTime').value;
+            const wakeTime = document.getElementById('wakeTime').value;
+
+            if (date && sleepTime && wakeTime) {
+                const sleepStart = new Date(`${date}T${sleepTime}`);
+                const sleepEnd = new Date(`${date}T${wakeTime}`);
+                const sleepDuration = (sleepEnd - sleepStart) / (1000 * 60 * 60);
+                const adjustedDuration = sleepDuration >= 0 ? sleepDuration : 24 + sleepDuration;
+
+                sleepData.push({ date: date, duration: adjustedDuration });
+                updateChart();
+                sleepForm.reset();
+            }
+        });
+
+        const ctx = document.getElementById('sleepChart').getContext('2d');
+        const sleepChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Sleep Duration (hours)',
+                    data: [],
+                    borderColor: [], 
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Hours' }
+                    }
+                }
+            }
+        });
+
+        function updateChart() {
+            sleepChart.data.labels = sleepData.map(entry => entry.date);
+            sleepChart.data.datasets[0].data = sleepData.map(entry => entry.duration);
+            sleepChart.data.datasets[0].borderColor = sleepData.map(entry => {
+                if (entry.duration < 6) return 'red';
+                else return 'green';
+            });
+            sleepChart.update();
+            updateRecommendation();
+        }
+
+        function updateRecommendation() {
+            if (sleepData.length === 0) return;
+            const lastSleep = sleepData[sleepData.length - 1].duration;
+            let recommendation = '';
+
+            if (lastSleep < 6) {
+                recommendation = 'Recommendation: You had less than 6 hours of sleep. Try to get more rest tonight.';
+            } else if (lastSleep >= 6 && lastSleep < 7) {
+                recommendation = 'Recommendation: You had a good sleep. Consider aiming for a bit more sleep for better rest.';
+            } else {
+                recommendation = 'Recommendation: You had a great sleep! Keep up the good work.';
+            }
+
+            recommendationDiv.textContent = recommendation;
+        }
+    </script>
+</body>
+</html>
