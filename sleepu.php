@@ -164,9 +164,9 @@
         <div id="reports-list">
             <?php
             // Database connection
-            $servername = "localhost"; // Replace with your server name
-            $username = "root";         // Replace with your database username
-            $password = "";             // Replace with your database password
+            $servername = "aws-simplified.cr4ooq6sa891.eu-north-1.rds.amazonaws.com"; // Replace with your server name
+            $username = "admin";         // Replace with your database username
+            $password = "nithya2002";             // Replace with your database password
             $dbname = "homeopathy";     // Replace with your database name
 
             $conn = new mysqli($servername, $username, $password, $dbname);
