@@ -230,9 +230,9 @@
         <?php
         
         // Database connection details (REPLACE WITH YOUR ACTUAL CREDENTIALS)
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
+        $servername = "aws-simplified.cr4ooq6sa891.eu-north-1.rds.amazonaws.com";
+        $username = "admin";
+        $password = "nithya2002";
         $dbname = "homeopathy";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
