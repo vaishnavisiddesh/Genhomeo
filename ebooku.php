@@ -79,9 +79,9 @@
         <p>Instead of carrying multiple bulky books, one eBook reader can hold thousands of eBooks. It saves a lot of space—in your home and in your bag. One doesn't have to worry about the storage limit. A single device is enough to read any number of books you want. Due to embedding restrictions on some platforms, please click the links below to view the eBooks in a new tab.</p>
     </div>
     <?php
-    $servername = "localhost"; // Replace with your database server name
-    $username = "root"; // Replace with your database username
-    $password = ""; // Replace with your database password
+    $servername = "aws-simplified.cr4ooq6sa891.eu-north-1.rds.amazonaws.com"; // Replace with your database server name
+    $username = "admin"; // Replace with your database username
+    $password = "nithya2002"; // Replace with your database password
     $dbname = "homeopathy"; // Replace with your database name
 
     // Create connection
