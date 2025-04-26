@@ -187,9 +187,9 @@
         <div class="contact-card">
             <?php
             // Database credentials (replace with your actual details)
-            $servername = "localhost";
-            $username = "root"; // Default XAMPP username
-            $password = "";     // Default XAMPP password (usually empty)
+            $servername = "aws-simplified.cr4ooq6sa891.eu-north-1.rds.amazonaws.com";
+            $username = "admin"; // Default XAMPP username
+            $password = "nithya2002";     // Default XAMPP password (usually empty)
             $dbname = "homeopathy";
 
             // Create connection
