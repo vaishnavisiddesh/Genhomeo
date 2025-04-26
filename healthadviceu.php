@@ -83,9 +83,9 @@
 
     <div class="flex">
         <?php
-        $servername = "localhost"; // Replace with your database server name
-        $username = "root"; // Replace with your database username
-        $password = ""; // Replace with your database password
+        $servername = "aws-simplified.cr4ooq6sa891.eu-north-1.rds.amazonaws.com"; // Replace with your database server name
+        $username = "admin"; // Replace with your database username
+        $password = "nithya2002"; // Replace with your database password
         $dbname = "homeopathy"; // Replace with your database name
 
         // Create connection
