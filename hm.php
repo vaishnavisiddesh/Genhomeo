@@ -106,9 +106,9 @@
         <div class="medicine-list">
             <h3>Existing Homeopathy Medicines</h3>
             <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
+            $servername = "aws-simplified.cr4ooq6sa891.eu-north-1.rds.amazonaws.com";
+            $username = "admin";
+            $password = "nithya2002";
             $dbname = "homeopathy";
 
             mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
