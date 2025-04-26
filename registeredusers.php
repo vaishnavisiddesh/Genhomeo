@@ -26,7 +26,7 @@
 
          <?php
       $i = 1;
-     $conn = mysqli_connect("localhost", "root", "", "reglog");
+     $conn = mysqli_connect("aws-simplified.cr4ooq6sa891.eu-north-1.rds.amazonaws.com", "admin", "nithya2002", "reglog");
       $rows = mysqli_query($conn, "SELECT * FROM tb_user");
       ?>
     <center><h1>Registered users are</h1></center>
